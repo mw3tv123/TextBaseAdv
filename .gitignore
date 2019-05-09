@@ -1,0 +1,4 @@
+# Don't track content of Python Bytecode file
+*.py[cod]     # Will match .pyc, .pyo and .pyd files.
+__pycache__/  # Exclude the whole folder
+.idea/
