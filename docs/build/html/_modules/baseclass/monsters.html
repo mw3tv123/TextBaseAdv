@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>baseclass.monsters &#8212; TextDungeon 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for baseclass.monsters</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sentry_sdk</span>
+<span class="n">sentry_sdk</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;https://42508ae8bd6040a097bca6b8e500dcd8@sentry.io/1439826&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">character</span> <span class="k">import</span> <span class="n">Character</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.character</span> <span class="k">import</span> <span class="n">Character</span>
+
+
+<div class="viewcode-block" id="Monster"><a class="viewcode-back" href="../../index.html#baseclass.monsters.Monster">[docs]</a><span class="k">class</span> <span class="nc">Monster</span><span class="p">(</span><span class="n">Character</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all type of monster&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">health_point</span><span class="p">,</span> <span class="n">armor</span><span class="p">,</span> <span class="n">damage</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">=</span> <span class="n">health_point</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">=</span> <span class="n">armor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+
+<div class="viewcode-block" id="Monster.move"><a class="viewcode-back" href="../../baseclass.html#baseclass.monsters.Monster.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Monster.interact"><a class="viewcode-back" href="../../baseclass.html#baseclass.monsters.Monster.interact">[docs]</a>    <span class="k">def</span> <span class="nf">interact</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Monster.is_alive"><a class="viewcode-back" href="../../index.html#baseclass.monsters.Monster.is_alive">[docs]</a>    <span class="k">def</span> <span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return True if monster still alive (HP &gt; 0), other wise False.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">&lt;</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function is used for debug.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Name: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">HP: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Damage: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Armor: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Level: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">armor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Zombie"><a class="viewcode-back" href="../../index.html#baseclass.monsters.Zombie">[docs]</a><span class="k">class</span> <span class="nc">Zombie</span><span class="p">(</span><span class="n">Monster</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Zombie class.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_level</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Zombie&quot;</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">damage</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Orge"><a class="viewcode-back" href="../../index.html#baseclass.monsters.Orge">[docs]</a><span class="k">class</span> <span class="nc">Orge</span><span class="p">(</span><span class="n">Monster</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Orge class.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_level</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Orge&quot;</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">damage</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Ghost"><a class="viewcode-back" href="../../index.html#baseclass.monsters.Ghost">[docs]</a><span class="k">class</span> <span class="nc">Ghost</span><span class="p">(</span><span class="n">Monster</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ghost class.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_level</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Ghost&quot;</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="n">damage</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">player_level</span><span class="p">),</span>
+                         <span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TextDungeon</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hung Tran.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

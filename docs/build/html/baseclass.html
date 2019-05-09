@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>baseclass package &#8212; TextDungeon 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="baseclass-package">
+<h1>baseclass package<a class="headerlink" href="#baseclass-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-baseclass.character">
+<span id="baseclass-character-module"></span><h2>baseclass.character module<a class="headerlink" href="#module-baseclass.character" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.character.Character">
+<em class="property">class </em><code class="descclassname">baseclass.character.</code><code class="descname">Character</code><a class="reference internal" href="_modules/baseclass/character.html#Character"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.character.Character" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Base class for monsters and player.</p>
+<dl class="method">
+<dt id="baseclass.character.Character.interact">
+<code class="descname">interact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/character.html#Character.interact"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.character.Character.interact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="baseclass.character.Character.metaclass">
+<code class="descname">metaclass</code><a class="headerlink" href="#baseclass.character.Character.metaclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABCMeta" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.character.Character.move">
+<code class="descname">move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/character.html#Character.move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.character.Character.move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass.die">
+<span id="baseclass-die-module"></span><h2>baseclass.die module<a class="headerlink" href="#module-baseclass.die" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.die.Die">
+<em class="property">class </em><code class="descclassname">baseclass.die.</code><code class="descname">Die</code><span class="sig-paren">(</span><em>sides=6</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/die.html#Die"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.die.Die" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents single die.</p>
+<dl class="method">
+<dt id="baseclass.die.Die.roll">
+<code class="descname">roll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/die.html#Die.roll"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.die.Die.roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roll the die.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass.items">
+<span id="baseclass-items-module"></span><h2>baseclass.items module<a class="headerlink" href="#module-baseclass.items" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.items.Armor">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">Armor</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>value</em>, <em>duration</em>, <em>armor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/items.html#Armor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.Armor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Item" title="baseclass.items.Item"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Item</span></code></a></p>
+<p>Base class for all armor.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.ChainArmor">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">ChainArmor</code><a class="reference internal" href="_modules/baseclass/items.html#ChainArmor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.ChainArmor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Armor" title="baseclass.items.Armor"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Armor</span></code></a></p>
+<p>Armor made from chain of metal.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.ClothArmor">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">ClothArmor</code><a class="reference internal" href="_modules/baseclass/items.html#ClothArmor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.ClothArmor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Armor" title="baseclass.items.Armor"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Armor</span></code></a></p>
+<p>Clothes texture are basic material.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.Gold">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">Gold</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/items.html#Gold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.Gold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Item" title="baseclass.items.Item"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Item</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.Item">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">Item</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/items.html#Item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The base class for all item.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.LeatherArmor">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">LeatherArmor</code><a class="reference internal" href="_modules/baseclass/items.html#LeatherArmor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.LeatherArmor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Armor" title="baseclass.items.Armor"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Armor</span></code></a></p>
+<p>Leather texture are improved material.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.Rock">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">Rock</code><a class="reference internal" href="_modules/baseclass/items.html#Rock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.Rock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Weapon" title="baseclass.items.Weapon"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Weapon</span></code></a></p>
+<p>Rock is a beginner weapon, low damage, range attack.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.RustyKnife">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">RustyKnife</code><a class="reference internal" href="_modules/baseclass/items.html#RustyKnife"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.RustyKnife" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Weapon" title="baseclass.items.Weapon"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Weapon</span></code></a></p>
+<p>Rusty Knife is a beginner weapon, low damage, melee attack.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.SteelArmor">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">SteelArmor</code><a class="reference internal" href="_modules/baseclass/items.html#SteelArmor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.SteelArmor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Armor" title="baseclass.items.Armor"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Armor</span></code></a></p>
+<p>Steel material are advanced material.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.items.Weapon">
+<em class="property">class </em><code class="descclassname">baseclass.items.</code><code class="descname">Weapon</code><span class="sig-paren">(</span><em>name</em>, <em>description</em>, <em>value</em>, <em>damage</em>, <em>duration</em>, <em>attack_range</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/items.html#Weapon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.items.Weapon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.items.Item" title="baseclass.items.Item"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.items.Item</span></code></a></p>
+<p>Base class for all weapons.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass.monsters">
+<span id="baseclass-monsters-module"></span><h2>baseclass.monsters module<a class="headerlink" href="#module-baseclass.monsters" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.monsters.Ghost">
+<em class="property">class </em><code class="descclassname">baseclass.monsters.</code><code class="descname">Ghost</code><span class="sig-paren">(</span><em>player_level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Ghost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Ghost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.monsters.Monster" title="baseclass.monsters.Monster"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.monsters.Monster</span></code></a></p>
+<p>Ghost class.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.monsters.Monster">
+<em class="property">class </em><code class="descclassname">baseclass.monsters.</code><code class="descname">Monster</code><span class="sig-paren">(</span><em>name</em>, <em>health_point</em>, <em>armor</em>, <em>damage</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Monster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Monster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#baseclass.character.Character" title="baseclass.character.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.character.Character</span></code></a></p>
+<p>Base class for all type of monster</p>
+<dl class="method">
+<dt id="baseclass.monsters.Monster.interact">
+<code class="descname">interact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Monster.interact"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Monster.interact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="baseclass.monsters.Monster.is_alive">
+<code class="descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Monster.is_alive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Monster.is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if monster still alive (HP &gt; 0), other wise False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.monsters.Monster.move">
+<code class="descname">move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Monster.move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Monster.move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.monsters.Orge">
+<em class="property">class </em><code class="descclassname">baseclass.monsters.</code><code class="descname">Orge</code><span class="sig-paren">(</span><em>player_level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Orge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Orge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.monsters.Monster" title="baseclass.monsters.Monster"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.monsters.Monster</span></code></a></p>
+<p>Orge class.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.monsters.Zombie">
+<em class="property">class </em><code class="descclassname">baseclass.monsters.</code><code class="descname">Zombie</code><span class="sig-paren">(</span><em>player_level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/monsters.html#Zombie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.monsters.Zombie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.monsters.Monster" title="baseclass.monsters.Monster"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.monsters.Monster</span></code></a></p>
+<p>Zombie class.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass.player">
+<span id="baseclass-player-module"></span><h2>baseclass.player module<a class="headerlink" href="#module-baseclass.player" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.player.Archer">
+<em class="property">class </em><code class="descclassname">baseclass.player.</code><code class="descname">Archer</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Archer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Archer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.player.Player" title="baseclass.player.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.player.Player</span></code></a></p>
+<p>Archer class</p>
+<dl class="method">
+<dt id="baseclass.player.Archer.improve_stats">
+<code class="descname">improve_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Archer.improve_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Archer.improve_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats improvement when level up.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.player.Assassin">
+<em class="property">class </em><code class="descclassname">baseclass.player.</code><code class="descname">Assassin</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Assassin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Assassin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.player.Player" title="baseclass.player.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.player.Player</span></code></a></p>
+<p>Assassin class</p>
+<dl class="method">
+<dt id="baseclass.player.Assassin.improve_stats">
+<code class="descname">improve_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Assassin.improve_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Assassin.improve_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats improvement when level up.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.player.Fighter">
+<em class="property">class </em><code class="descclassname">baseclass.player.</code><code class="descname">Fighter</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Fighter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Fighter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.player.Player" title="baseclass.player.Player"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.player.Player</span></code></a></p>
+<p>Fighter class</p>
+<dl class="method">
+<dt id="baseclass.player.Fighter.improve_stats">
+<code class="descname">improve_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Fighter.improve_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Fighter.improve_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats improvement when level up.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.player.Player">
+<em class="property">class </em><code class="descclassname">baseclass.player.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>name</em>, <em>health_point</em>, <em>armor</em>, <em>attack</em>, <em>class_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#baseclass.character.Character" title="baseclass.character.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.character.Character</span></code></a></p>
+<p>Base class for playable character define basic interaction.</p>
+<dl class="attribute">
+<dt id="baseclass.player.Player.dice">
+<code class="descname">dice</code><em class="property"> = &lt;baseclass.die.Die object&gt;</em><a class="headerlink" href="#baseclass.player.Player.dice" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="baseclass.player.Player.improve_stats">
+<code class="descname">improve_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Player.improve_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Player.improve_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats improvement when level up.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.player.Player.interact">
+<code class="descname">interact</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Player.interact"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Player.interact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Player interact actions. Player are able to decide which action will take place next turn.
+List of actions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Attack;</p></li>
+<li><p>Cast skills;</p></li>
+<li><p>Use item;</p></li>
+<li><p>???</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.player.Player.level_up">
+<code class="descname">level_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Player.level_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Player.level_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Level up if player acquire enough current level experiments.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="baseclass.player.Player.levels_list">
+<code class="descname">levels_list</code><em class="property"> = [20, 36, 53, 71, 90, 110, 131, 153, 176, 200]</em><a class="headerlink" href="#baseclass.player.Player.levels_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="baseclass.player.Player.move">
+<code class="descname">move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/player.html#Player.move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.player.Player.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Player move actions. Player are able to move 4 directions: NORTH, EAST, SOUTH, WEST.
+Each turn player are only move 1 time and advance 1 tile.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass.tiles">
+<span id="baseclass-tiles-module"></span><h2>baseclass.tiles module<a class="headerlink" href="#module-baseclass.tiles" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="baseclass.tiles.EnemyRoom">
+<em class="property">class </em><code class="descclassname">baseclass.tiles.</code><code class="descname">EnemyRoom</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#EnemyRoom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.EnemyRoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.tiles.Tile" title="baseclass.tiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.tiles.Tile</span></code></a></p>
+<p>This is where player encounter enemy(s).</p>
+<dl class="method">
+<dt id="baseclass.tiles.EnemyRoom.intro_text">
+<code class="descname">intro_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#EnemyRoom.intro_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.EnemyRoom.intro_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appear when player enter this tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.EnemyRoom.modify_player">
+<code class="descname">modify_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#EnemyRoom.modify_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.EnemyRoom.modify_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show how player interact with object in this tile.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.tiles.Path">
+<em class="property">class </em><code class="descclassname">baseclass.tiles.</code><code class="descname">Path</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.tiles.Tile" title="baseclass.tiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.tiles.Tile</span></code></a></p>
+<p>This is an empty space with nothing in it.</p>
+<dl class="method">
+<dt id="baseclass.tiles.Path.intro_text">
+<code class="descname">intro_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Path.intro_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Path.intro_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appear when player enter this tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.Path.modify_player">
+<code class="descname">modify_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Path.modify_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Path.modify_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>This place has no action with player.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.tiles.SpawnPoint">
+<em class="property">class </em><code class="descclassname">baseclass.tiles.</code><code class="descname">SpawnPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#SpawnPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.SpawnPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.tiles.Tile" title="baseclass.tiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.tiles.Tile</span></code></a></p>
+<p>Start point when player start a game.</p>
+<dl class="method">
+<dt id="baseclass.tiles.SpawnPoint.intro_text">
+<code class="descname">intro_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#SpawnPoint.intro_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.SpawnPoint.intro_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appear when player enter this tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.SpawnPoint.modify_player">
+<code class="descname">modify_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#SpawnPoint.modify_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.SpawnPoint.modify_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>This room has no action on player.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.tiles.Tile">
+<em class="property">class </em><code class="descclassname">baseclass.tiles.</code><code class="descname">Tile</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Tile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for all map tile</p>
+<dl class="method">
+<dt id="baseclass.tiles.Tile.intro_text">
+<code class="descname">intro_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Tile.intro_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Tile.intro_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appear when player enter this tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.Tile.modify_player">
+<code class="descname">modify_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#Tile.modify_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.Tile.modify_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show how player interact with object in this tile.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="baseclass.tiles.TreasureChest">
+<em class="property">class </em><code class="descclassname">baseclass.tiles.</code><code class="descname">TreasureChest</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#TreasureChest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.TreasureChest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#baseclass.tiles.Tile" title="baseclass.tiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">baseclass.tiles.Tile</span></code></a></p>
+<p>This is where player find a treasure chess.</p>
+<dl class="method">
+<dt id="baseclass.tiles.TreasureChest.add_treasure">
+<code class="descname">add_treasure</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#TreasureChest.add_treasure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.TreasureChest.add_treasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add item into player inventory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.TreasureChest.intro_text">
+<code class="descname">intro_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#TreasureChest.intro_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.TreasureChest.intro_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appear when player enter this tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="baseclass.tiles.TreasureChest.modify_player">
+<code class="descname">modify_player</code><span class="sig-paren">(</span><em>player</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/baseclass/tiles.html#TreasureChest.modify_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#baseclass.tiles.TreasureChest.modify_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show how player interact with object in this tile.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-baseclass">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-baseclass" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">TextDungeon</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hung Tran.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/baseclass.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

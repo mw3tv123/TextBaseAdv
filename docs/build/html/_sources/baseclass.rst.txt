@@ -1,0 +1,62 @@
+baseclass package
+=================
+
+Submodules
+----------
+
+baseclass.character module
+--------------------------
+
+.. automodule:: baseclass.character
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+baseclass.die module
+--------------------
+
+.. automodule:: baseclass.die
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+baseclass.items module
+----------------------
+
+.. automodule:: baseclass.items
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+baseclass.monsters module
+-------------------------
+
+.. automodule:: baseclass.monsters
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+baseclass.player module
+-----------------------
+
+.. automodule:: baseclass.player
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+baseclass.tiles module
+----------------------
+
+.. automodule:: baseclass.tiles
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: baseclass
+    :members:
+    :undoc-members:
+    :show-inheritance:

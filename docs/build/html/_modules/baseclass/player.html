@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>baseclass.player &#8212; TextDungeon 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for baseclass.player</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sentry_sdk</span>
+<span class="n">sentry_sdk</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;https://42508ae8bd6040a097bca6b8e500dcd8@sentry.io/1439826&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">character</span> <span class="k">import</span> <span class="n">Character</span>
+    <span class="kn">from</span> <span class="nn">die</span> <span class="k">import</span> <span class="n">Die</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.character</span> <span class="k">import</span> <span class="n">Character</span>
+    <span class="kn">from</span> <span class="nn">.die</span> <span class="k">import</span> <span class="n">Die</span>
+
+
+<div class="viewcode-block" id="Player"><a class="viewcode-back" href="../../index.html#baseclass.player.Player">[docs]</a><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="n">Character</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for playable character define basic interaction.&quot;&quot;&quot;</span>
+    <span class="n">levels_list</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># List of all level with experiments need to advance to next level</span>
+        <span class="mi">20</span><span class="p">,</span>  <span class="c1"># 0</span>
+        <span class="mi">36</span><span class="p">,</span>  <span class="c1"># 16 + 0</span>
+        <span class="mi">53</span><span class="p">,</span>  <span class="c1"># 16 + 1</span>
+        <span class="mi">71</span><span class="p">,</span>  <span class="c1"># 16 + 2</span>
+        <span class="mi">90</span><span class="p">,</span>  <span class="c1"># 16 + 3</span>
+        <span class="mi">110</span><span class="p">,</span>  <span class="c1"># 16 + 4</span>
+        <span class="mi">131</span><span class="p">,</span>  <span class="c1"># 16 + 5</span>
+        <span class="mi">153</span><span class="p">,</span>  <span class="c1"># 16 + 6</span>
+        <span class="mi">176</span><span class="p">,</span>  <span class="c1"># 16 + 7</span>
+        <span class="mi">200</span><span class="p">,</span>  <span class="c1"># 16 + 8</span>
+    <span class="p">]</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Die</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">health_point</span><span class="p">,</span> <span class="n">armor</span><span class="p">,</span> <span class="n">attack</span><span class="p">,</span> <span class="n">class_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">=</span> <span class="n">health_point</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">=</span> <span class="n">armor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack</span> <span class="o">=</span> <span class="n">attack</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_type</span> <span class="o">=</span> <span class="n">class_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_exp</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Start level</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Player.move"><a class="viewcode-back" href="../../index.html#baseclass.player.Player.move">[docs]</a>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Player move actions. Player are able to move 4 directions: NORTH, EAST, SOUTH, WEST.</span>
+<span class="sd">        Each turn player are only move 1 time and advance 1 tile.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Player.interact"><a class="viewcode-back" href="../../index.html#baseclass.player.Player.interact">[docs]</a>    <span class="k">def</span> <span class="nf">interact</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Player interact actions. Player are able to decide which action will take place next turn.</span>
+<span class="sd">        List of actions:</span>
+<span class="sd">            - Attack;</span>
+<span class="sd">            - Cast skills;</span>
+<span class="sd">            - Use item;</span>
+<span class="sd">            - ???</span>
+<span class="sd">            - ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Player.level_up"><a class="viewcode-back" href="../../index.html#baseclass.player.Player.level_up">[docs]</a>    <span class="k">def</span> <span class="nf">level_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Level up if player acquire enough current level experiments.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_exp</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">levels_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="Player.improve_stats"><a class="viewcode-back" href="../../index.html#baseclass.player.Player.improve_stats">[docs]</a>    <span class="k">def</span> <span class="nf">improve_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stats improvement when level up.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function use for debug only.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Name: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">HP: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Armor: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Attack: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Class: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Level: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">armor</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">attack</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">class_type</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+                                                                                      <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Fighter"><a class="viewcode-back" href="../../index.html#baseclass.player.Fighter">[docs]</a><span class="k">class</span> <span class="nc">Fighter</span><span class="p">(</span><span class="n">Player</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fighter class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">attack</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(),</span>
+                         <span class="n">class_type</span><span class="o">=</span><span class="s2">&quot;Fighter&quot;</span><span class="p">,</span>
+                         <span class="p">)</span>
+
+<div class="viewcode-block" id="Fighter.improve_stats"><a class="viewcode-back" href="../../index.html#baseclass.player.Fighter.improve_stats">[docs]</a>    <span class="k">def</span> <span class="nf">improve_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack</span> <span class="o">+=</span> <span class="mi">0</span></div></div>
+
+
+<div class="viewcode-block" id="Archer"><a class="viewcode-back" href="../../index.html#baseclass.player.Archer">[docs]</a><span class="k">class</span> <span class="nc">Archer</span><span class="p">(</span><span class="n">Player</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Archer class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">(),</span>
+                         <span class="n">attack</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">class_type</span><span class="o">=</span><span class="s2">&quot;Archer&quot;</span><span class="p">,</span>
+                         <span class="p">)</span>
+
+<div class="viewcode-block" id="Archer.improve_stats"><a class="viewcode-back" href="../../index.html#baseclass.player.Archer.improve_stats">[docs]</a>    <span class="k">def</span> <span class="nf">improve_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack</span> <span class="o">+=</span> <span class="mi">0</span></div></div>
+
+
+<div class="viewcode-block" id="Assassin"><a class="viewcode-back" href="../../index.html#baseclass.player.Assassin">[docs]</a><span class="k">class</span> <span class="nc">Assassin</span><span class="p">(</span><span class="n">Player</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Assassin class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                         <span class="n">health_point</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">attack</span><span class="o">=</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">roll</span><span class="p">()),</span>
+                         <span class="n">class_type</span><span class="o">=</span><span class="s2">&quot;Assassin&quot;</span><span class="p">,</span>
+                         <span class="p">)</span>
+
+<div class="viewcode-block" id="Assassin.improve_stats"><a class="viewcode-back" href="../../index.html#baseclass.player.Assassin.improve_stats">[docs]</a>    <span class="k">def</span> <span class="nf">improve_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_point</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">+=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack</span> <span class="o">+=</span> <span class="mi">0</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TextDungeon</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hung Tran.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

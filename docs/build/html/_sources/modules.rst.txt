@@ -1,0 +1,8 @@
+TextDungeon
+===========
+
+.. toctree::
+   :maxdepth: 4
+
+   baseclass
+   main

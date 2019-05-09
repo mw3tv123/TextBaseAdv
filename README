@@ -1,0 +1,18 @@
+#VERSION: 0.0.1
+#INSTALL:
+    git clone
+#CHANGELOG:
+    + Map;
+    + Levels;
+    + Monster properties;
+#TODO:
+    + Playable class;
+    + Player class;
+    + Spawn point;
+    + Monster behavior;
+    + Tile properties;
+    + More monster;
+    + More items;
+    + More class;
+    + ???
+#LICENSE: MIT

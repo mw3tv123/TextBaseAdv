@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>baseclass.items &#8212; TextDungeon 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for baseclass.items</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sentry_sdk</span>
+<span class="n">sentry_sdk</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;https://42508ae8bd6040a097bca6b8e500dcd8@sentry.io/1439826&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Item"><a class="viewcode-back" href="../../index.html#baseclass.items.Item">[docs]</a><span class="k">class</span> <span class="nc">Item</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The base class for all item.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function use for debug.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2">=====</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">Value: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gold"><a class="viewcode-back" href="../../baseclass.html#baseclass.items.Gold">[docs]</a><span class="k">class</span> <span class="nc">Gold</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Gold&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A round coin with </span><span class="si">{}</span><span class="s2"> stamped on the front.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">)),</span>
+                         <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Weapon"><a class="viewcode-back" href="../../index.html#baseclass.items.Weapon">[docs]</a><span class="k">class</span> <span class="nc">Weapon</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all weapons.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">damage</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">attack_range</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">damage</span> <span class="o">=</span> <span class="n">damage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">duration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attack_range</span> <span class="o">=</span> <span class="n">attack_range</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For debug only.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2">=====</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">Value: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Damage: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Duration:</span><span class="si">{}</span><span class="se">\n</span><span class="s2">Attack range: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">damage</span><span class="p">,</span>
+                                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span>
+                                                                                            <span class="bp">self</span><span class="o">.</span><span class="n">attack_range</span><span class="p">,</span>
+                                                                                            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Rock"><a class="viewcode-back" href="../../index.html#baseclass.items.Rock">[docs]</a><span class="k">class</span> <span class="nc">Rock</span><span class="p">(</span><span class="n">Weapon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Rock is a beginner weapon, low damage, range attack.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Rock&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A fist-sized rock, suitable for bludgeoning.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">damage</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                         <span class="n">attack_range</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RustyKnife"><a class="viewcode-back" href="../../index.html#baseclass.items.RustyKnife">[docs]</a><span class="k">class</span> <span class="nc">RustyKnife</span><span class="p">(</span><span class="n">Weapon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Rusty Knife is a beginner weapon, low damage, melee attack.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Rusty Knife&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A small knife with some rust. A suitable for new adventurer.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">damage</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                         <span class="n">attack_range</span><span class="o">=</span><span class="mi">1</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Armor"><a class="viewcode-back" href="../../index.html#baseclass.items.Armor">[docs]</a><span class="k">class</span> <span class="nc">Armor</span><span class="p">(</span><span class="n">Item</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all armor.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">armor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">duration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">armor</span> <span class="o">=</span> <span class="n">armor</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For debug only.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2">=====</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">Value: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Armor: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">Duration:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">armor</span><span class="p">,</span>
+                                                                         <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span>
+                                                                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ClothArmor"><a class="viewcode-back" href="../../index.html#baseclass.items.ClothArmor">[docs]</a><span class="k">class</span> <span class="nc">ClothArmor</span><span class="p">(</span><span class="n">Armor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clothes texture are basic material.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cloth Armor&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Armor made from cloth. Suitable for beginner.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LeatherArmor"><a class="viewcode-back" href="../../index.html#baseclass.items.LeatherArmor">[docs]</a><span class="k">class</span> <span class="nc">LeatherArmor</span><span class="p">(</span><span class="n">Armor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Leather texture are improved material.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Leather Armor&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Armor made from leather. Improve combat effectiveness.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ChainArmor"><a class="viewcode-back" href="../../index.html#baseclass.items.ChainArmor">[docs]</a><span class="k">class</span> <span class="nc">ChainArmor</span><span class="p">(</span><span class="n">Armor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Armor made from chain of metal.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Chain Armor&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Armor made from chain of metal. Greater improve combat effectiveness.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+                         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SteelArmor"><a class="viewcode-back" href="../../index.html#baseclass.items.SteelArmor">[docs]</a><span class="k">class</span> <span class="nc">SteelArmor</span><span class="p">(</span><span class="n">Armor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Steel material are advanced material.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Steel Armor&quot;</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Armor made from steel. Combat effectiveness step into another level.&quot;</span><span class="p">,</span>
+                         <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                         <span class="n">armor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                         <span class="n">duration</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+                         <span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TextDungeon</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hung Tran.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

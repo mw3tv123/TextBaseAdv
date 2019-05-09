@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>baseclass.tiles &#8212; TextDungeon 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for baseclass.tiles</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sentry_sdk</span>
+<span class="n">sentry_sdk</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;https://42508ae8bd6040a097bca6b8e500dcd8@sentry.io/1439826&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">items</span>
+    <span class="kn">import</span> <span class="nn">monsters</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">items</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">monsters</span>
+
+
+<div class="viewcode-block" id="Tile"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Tile">[docs]</a><span class="k">class</span> <span class="nc">Tile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all map tile&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+<div class="viewcode-block" id="Tile.intro_text"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Tile.intro_text">[docs]</a>    <span class="k">def</span> <span class="nf">intro_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Appear when player enter this tile.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Tile.modify_player"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Tile.modify_player">[docs]</a>    <span class="k">def</span> <span class="nf">modify_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Show how player interact with object in this tile.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="SpawnPoint"><a class="viewcode-back" href="../../index.html#baseclass.tiles.SpawnPoint">[docs]</a><span class="k">class</span> <span class="nc">SpawnPoint</span><span class="p">(</span><span class="n">Tile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Start point when player start a game.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SpawnPoint.intro_text"><a class="viewcode-back" href="../../index.html#baseclass.tiles.SpawnPoint.intro_text">[docs]</a>    <span class="k">def</span> <span class="nf">intro_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        You find yourself if a cave with a flickering torch on the wall.</span>
+<span class="s2">        You can make out four paths, each equally as dark and foreboding.</span>
+<span class="s2">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="SpawnPoint.modify_player"><a class="viewcode-back" href="../../index.html#baseclass.tiles.SpawnPoint.modify_player">[docs]</a>    <span class="k">def</span> <span class="nf">modify_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This room has no action on player.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+
+
+<div class="viewcode-block" id="TreasureChest"><a class="viewcode-back" href="../../index.html#baseclass.tiles.TreasureChest">[docs]</a><span class="k">class</span> <span class="nc">TreasureChest</span><span class="p">(</span><span class="n">Tile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is where player find a treasure chess.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">items</span><span class="o">.</span><span class="n">Dagger</span><span class="p">,</span> <span class="n">items</span><span class="o">.</span><span class="n">Gold</span><span class="p">,</span> <span class="n">items</span><span class="o">.</span><span class="n">Rock</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TreasureChest.add_treasure"><a class="viewcode-back" href="../../index.html#baseclass.tiles.TreasureChest.add_treasure">[docs]</a>    <span class="k">def</span> <span class="nf">add_treasure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add item into player inventory.&quot;&quot;&quot;</span>
+        <span class="n">player</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TreasureChest.intro_text"><a class="viewcode-back" href="../../index.html#baseclass.tiles.TreasureChest.intro_text">[docs]</a>    <span class="k">def</span> <span class="nf">intro_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;You find a treasure chess at the corner. There is a </span><span class="si">{}</span><span class="s2"> in it.&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TreasureChest.modify_player"><a class="viewcode-back" href="../../index.html#baseclass.tiles.TreasureChest.modify_player">[docs]</a>    <span class="k">def</span> <span class="nf">modify_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_treasure</span><span class="p">(</span><span class="n">player</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="EnemyRoom"><a class="viewcode-back" href="../../index.html#baseclass.tiles.EnemyRoom">[docs]</a><span class="k">class</span> <span class="nc">EnemyRoom</span><span class="p">(</span><span class="n">Tile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is where player encounter enemy(s).&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">player</span><span class="o">.</span><span class="n">level</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">monster</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">monsters</span><span class="o">.</span><span class="n">Zombie</span><span class="p">,</span> <span class="n">monsters</span><span class="o">.</span><span class="n">Orge</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<div class="viewcode-block" id="EnemyRoom.intro_text"><a class="viewcode-back" href="../../index.html#baseclass.tiles.EnemyRoom.intro_text">[docs]</a>    <span class="k">def</span> <span class="nf">intro_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">monster</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Unlucky for you, there&#39;re a group of </span><span class="si">{}</span><span class="s2"> monsters stay here.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">monster</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;There&#39;re only corpse of defeated monsters.&quot;</span></div>
+
+<div class="viewcode-block" id="EnemyRoom.modify_player"><a class="viewcode-back" href="../../index.html#baseclass.tiles.EnemyRoom.modify_player">[docs]</a>    <span class="k">def</span> <span class="nf">modify_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">monster</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">each</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="n">player</span><span class="o">.</span><span class="n">health_point</span> <span class="o">-=</span> <span class="n">each</span><span class="o">.</span><span class="n">damage</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A </span><span class="si">{}</span><span class="s2"> inflicted </span><span class="si">{}</span><span class="s2"> damage to you.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">each</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">each</span><span class="o">.</span><span class="n">damage</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="Path"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Path">[docs]</a><span class="k">class</span> <span class="nc">Path</span><span class="p">(</span><span class="n">Tile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is an empty space with nothing in it.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Path.intro_text"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Path.intro_text">[docs]</a>    <span class="k">def</span> <span class="nf">intro_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;Empty space. Nothing in here.&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Path.modify_player"><a class="viewcode-back" href="../../index.html#baseclass.tiles.Path.modify_player">[docs]</a>    <span class="k">def</span> <span class="nf">modify_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This place has no action with player.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">TextDungeon</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Hung Tran.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
