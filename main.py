@@ -21,7 +21,7 @@ if __name__ == '__main__':
     while True:
         coordinate_x = random.randrange(25)
         coordinate_y = random.randrange(25)
-        if final_map[coordinate_x][coordinate_y]:
+        if final_map[coordinate_x][coordinate_y] is None:
             final_map[coordinate_x][coordinate_y] = SpawnPoint(coordinate_x, coordinate_y)
             player1 = Fighter(name='A', position=[coordinate_x, coordinate_y])
             break
@@ -38,18 +38,18 @@ if __name__ == '__main__':
 
         # If next tile out of map, inform player about that and do loop again.
         next_x, next_y = [sum(element) for element in zip(player1.position, directions[player1_direction])]
-        if not final_map[next_x][next_y]:
+        if next_x >= 25 or next_y >= 25:
             print("Out of map! Please choose or directions!")
             continue
 
         # If next tile is a wall, inform player and do loop again.
-        if final_map[next_x][next_y] == Wall:
-            print("Stone wall ahead, can't go that way. Please choose another direction!")
+        if isinstance(final_map[next_x][next_y], Wall):
+            print(final_map[next_x][next_y].intro_text())
             continue
 
         player1.position = [next_x, next_y]  # If nothing wrong happen then move player to next tile.
 
         # Now generate properties for the tile player is in.
         if not isinstance(final_map[next_x][next_y], (Path, TreasureChest, EnemyRoom)):
-            final_map[next_x][next_y] = map_generator.add_map_element(next_x, next_y)
-        print(final_map[next_x][next_y]) if isinstance(final_map[next_x][next_y], object) else print("None")
+            final_map[next_x][next_y] = map_generator.add_map_element(next_x, next_y, player_level=player1.level)
+        print(final_map[next_x][next_y].intro_text()) if isinstance(final_map[next_x][next_y], object) else print("None")

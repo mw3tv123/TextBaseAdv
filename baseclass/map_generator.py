@@ -1,6 +1,7 @@
 import random
 import numpy
 import matplotlib.pyplot as plt
+from scipy import ndimage
 import sentry_sdk
 sentry_sdk.init("https://42508ae8bd6040a097bca6b8e500dcd8@sentry.io/1439826")
 try:
@@ -25,7 +26,7 @@ def create_tunnel(created_map, max_tunnel_length, max_tunnels):
     # Pickup a random start point
     current_x = random.choice(range(len(created_map)))
     current_y = random.choice(range(len(created_map)))
-    created_map[current_x][current_y] = True
+    created_map[current_x][current_y] = None
 
     def random_move(current_direction):
         # Define 4 directions which the tunnel point to next turn
@@ -55,7 +56,7 @@ def create_tunnel(created_map, max_tunnel_length, max_tunnels):
                 last_direction = random_move(last_direction)
                 continue
             current_x, current_y = [x + y for x, y in zip(last_direction, [current_x, current_y])]
-            created_map[current_x][current_y] = True
+            created_map[current_x][current_y] = None
             current_tunnel_length += 1
 
         # Repeat until we get max tunnel
@@ -63,15 +64,20 @@ def create_tunnel(created_map, max_tunnel_length, max_tunnels):
     return created_map
 
 
-def add_map_element(_x, _y, weights=None):
-    map_elements = [Path, EnemyRoom, TreasureChest]
+def add_map_element(x_axis, y_axis, player_level, weights=None):
+    """Generate random map element like Path, Enemy, Treasure."""
+    map_elements = [Path(x=x_axis, y=y_axis),
+                    EnemyRoom(x=x_axis, y=y_axis, player_level=player_level),
+                    TreasureChest(x=x_axis, y=y_axis, player_level=player_level)]
+    # Change of an element appear, from left -> right: Path, Enemy, Treasure.
+    # This argument can be change defend on player level.
     if weights is None:
         weights = [0.8, 0.15, 0.05]
-    return numpy.random.choice(map_elements, p=weights)(_x, _y)
+    return numpy.random.choice(map_elements, p=weights)
 
 
-if __name__ == '__main__':
-    wall_only_map = create_blank_map(dimensions=25)
-    final_map = create_tunnel(wall_only_map, max_tunnels=500, max_tunnel_length=5)
-    plt.imshow(final_map, cmap="gray")
-    plt.show()
+def render_map(map_data):
+    """Render a digital map into a graphic map."""
+    plt.imshow(map_data, clim=(0.064, 0.068))
+    mod_img = ndimage.median_filter(map_data, 20)
+    plt.imshow(mod_img)

@@ -21,7 +21,7 @@ class Gold(Item):
         """Constructor"""
         self.amount = amount
         super().__init__(name="Gold",
-                         description="A round coin with {} stamped on the front.".format(str(self.amount)),
+                         description="A bag of gold.",
                          value=self.amount)
 
 
